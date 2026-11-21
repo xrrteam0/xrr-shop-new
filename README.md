@@ -1,0 +1,3 @@
+# XRR Shop
+
+Minimal digital-products storefront with a product manager, Netlify Blobs catalog storage, and PayPal Orders API integration. See the project files for setup. Configure ADMIN_PASSWORD, PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET and PAYPAL_ENV in Netlify environment variables. Never commit secrets. Test with PayPal sandbox before enabling live payments. This is a starter implementation and needs security, legal, tax, privacy, refund and digital-delivery review before production.
