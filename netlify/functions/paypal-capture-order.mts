@@ -1,5 +1,7 @@
-import { getStore } from "@netlify/blobs";
-const store = getStore("xrr-shop-catalog");
+import { getDeployStore } from "@netlify/blobs";
+
+// Same deploy-specific catalog as the other functions; isolated from production.
+const store = getDeployStore("xrr-shop-catalog");
 export default async (req: Request) => {
   if (req.method !== "POST") return new Response("Method not allowed", { status: 405 });
   const clientId = Netlify.env.get("PAYPAL_CLIENT_ID");
