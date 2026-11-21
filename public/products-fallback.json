@@ -1,0 +1,35 @@
+[
+  {
+    "id": "starter-template",
+    "name": "Website Starter Kit",
+    "category": "Templates",
+    "price": 9.9,
+    "currency": "EUR",
+    "description": "A clean, responsive website starter for your next project.",
+    "deliveryUrl": "",
+    "featured": true,
+    "active": true
+  },
+  {
+    "id": "automation-pack",
+    "name": "Automation Pack",
+    "category": "Automation",
+    "price": 14.9,
+    "currency": "EUR",
+    "description": "A collection of original workflow examples and productivity automations.",
+    "deliveryUrl": "",
+    "featured": true,
+    "active": true
+  },
+  {
+    "id": "developer-toolkit",
+    "name": "Developer Toolkit",
+    "category": "Developer Tools",
+    "price": 19.9,
+    "currency": "EUR",
+    "description": "Useful developer resources, snippets and project utilities.",
+    "deliveryUrl": "",
+    "featured": false,
+    "active": true
+  }
+]
