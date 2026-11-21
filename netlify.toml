@@ -1,0 +1,29 @@
+[build]
+  publish = "public"
+  command = "npm run build"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/catalog"
+  to = "/.netlify/functions/catalog"
+  status = 200
+
+[[redirects]]
+  from = "/api/paypal/create-order"
+  to = "/.netlify/functions/paypal-create-order"
+  status = 200
+
+[[redirects]]
+  from = "/api/paypal/capture-order"
+  to = "/.netlify/functions/paypal-capture-order"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
