@@ -2,6 +2,12 @@ import { getDeployStore } from "@netlify/blobs";
 
 // Same deploy-specific catalog as the catalog function; isolated from production.
 const store = getDeployStore("xrr-shop-catalog");
+const defaultProducts = [
+  { id: "starter-template", name: "Website Starter Kit", price: 9.90, active: true, deliveryUrl: "" },
+  { id: "automation-pack", name: "Automation Pack", price: 14.90, active: true, deliveryUrl: "" },
+  { id: "developer-toolkit", name: "Developer Toolkit", price: 19.90, active: true, deliveryUrl: "" }
+];
+
 export default async (req: Request) => {
   if (req.method !== "POST") return new Response("Method not allowed", { status: 405 });
   const clientId = Netlify.env.get("PAYPAL_CLIENT_ID");
@@ -9,7 +15,7 @@ export default async (req: Request) => {
   const env = Netlify.env.get("PAYPAL_ENV") === "live" ? "https://api-m.paypal.com" : "https://api-m.sandbox.paypal.com";
   if (!clientId || !secret) return Response.json({ error: "PayPal is not configured yet." }, { status: 503 });
   const { productId } = await req.json();
-  const products = await store.get("products", { type: "json" }) as any[] | null;
+  const products = (await store.get("products", { type: "json" }) as any[] | null) ?? defaultProducts;
   const product = (products ?? []).find(p => p.id === productId && p.active !== false);
   if (!product) return Response.json({ error: "Product not found." }, { status: 404 });
   const basic = btoa(`${clientId}:${secret}`);
