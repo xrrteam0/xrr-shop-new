@@ -1,6 +1,7 @@
-import { getStore } from "@netlify/blobs";
+import { getDeployStore } from "@netlify/blobs";
 
-const store = getStore("xrr-shop-catalog");
+// Isolated per-deploy catalog: sandbox previews cannot overwrite the main catalog.
+const store = getDeployStore("xrr-shop-catalog");
 const defaults = [
   { id: "starter-template", name: "Website Starter Kit", category: "Templates", price: 9.90, currency: "EUR", description: "A clean, responsive website starter for your next project.", deliveryUrl: "", featured: true, active: true },
   { id: "automation-pack", name: "Automation Pack", category: "Automation", price: 14.90, currency: "EUR", description: "Original workflow examples and productivity automations.", deliveryUrl: "", featured: true, active: true },
